@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Linked List Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Top Control Bar -->
+        <header class="control-bar">
+            <div class="logo">
+                <h1>🔗 ListVisualizer <span class="version">Pro</span></h1>
+            </div>
+
+            <div class="controls-group">
+                <select id="listType" class="select-input">
+                    <option value="singly">Singly Linked List</option>
+                    <option value="doubly">Doubly Linked List</option>
+                    <option value="circular">Circular Linked List</option>
+                </select>
+            </div>
+
+            <div class="controls-group playback-controls">
+                <button id="btnPrev" class="icon-btn" title="Previous Step">⏮</button>
+                <button id="btnPlay" class="icon-btn" title="Play/Pause">⏯</button>
+                <button id="btnNext" class="icon-btn" title="Next Step">⏭</button>
+                <div class="speed-control">
+                    <label>Speed</label>
+                    <input type="range" id="speedSlider" min="1" max="5" value="3">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <!-- Left: Operations Panel -->
+            <aside class="operations-panel">
+                <div class="panel-section">
+                    <h3>Insert</h3>
+                    <div class="op-grid">
+                        <input type="number" id="insertVal" placeholder="Value" class="input-sm">
+                        <input type="number" id="insertPos" placeholder="Idx" class="input-sm">
+                        <button onclick="app.insertHead()" class="btn-op">Head</button>
+                        <button onclick="app.insertTail()" class="btn-op">Tail</button>
+                        <button onclick="app.insertPos()" class="btn-op">Pos</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Delete</h3>
+                    <div class="op-grid">
+                        <input type="number" id="deletePos" placeholder="Idx" class="input-sm">
+                        <button onclick="app.deleteHead()" class="btn-op btn-danger">Head</button>
+                        <button onclick="app.deleteTail()" class="btn-op btn-danger">Tail</button>
+                        <button onclick="app.deletePos()" class="btn-op btn-danger">Pos</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Tools</h3>
+                    <div class="op-grid">
+                        <input type="number" id="searchVal" placeholder="Value" class="input-sm">
+                        <button onclick="app.search()" class="btn-op btn-info">Search</button>
+                        <button onclick="app.reverse()" class="btn-op btn-warn">Reverse</button>
+                        <button onclick="app.generateRandom()" class="btn-op btn-primary"
+                            style="grid-column: span 3;">🎲 Random List</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center: Visualization Canvas -->
+            <section class="canvas-container" id="canvasContainer">
+                <svg id="svgLayer" class="svg-layer"></svg>
+                <div id="nodeLayer" class="node-layer">
+                    <!-- Nodes will be injected here -->
+                </div>
+                <div id="messageOverlay" class="message-overlay"></div>
+            </section>
+
+            <!-- Right: Educational Context -->
+            <aside class="context-panel">
+                <div class="code-box">
+                    <div class="panel-header">
+                        <h3>Code Walkthrough</h3>
+                        <span class="lang-badge">C++</span>
+                    </div>
+                    <pre><code id="codeDisplay">// Select an operation</code></pre>
+                </div>
+
+                <div class="explanation-box">
+                    <h3>What's Happening?</h3>
+                    <p id="explanationText">Ready to visualize. Select an operation to begin.</p>
+                </div>
+
+                <div class="variable-watch">
+                    <h3>Variables</h3>
+                    <div id="varTable" class="var-table">
+                        <!-- Variables injected here -->
+                    </div>
+                </div>
+
+                <div class="memory-box">
+                    <h3>Variables</h3>
+                    <div id="variableWatch" class="var-grid">
+                        <!-- Variable watch content -->
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="script-new.js"></script>
+</body>
+
+</html>
